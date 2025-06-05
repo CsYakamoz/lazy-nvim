@@ -20,6 +20,28 @@ return {
   },
 
   {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        menu = { border = "rounded" },
+        documentation = { window = { border = "rounded" } },
+      },
+      signature = { window = { border = "rounded" } },
+    },
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        float = {
+          border = "rounded",
+        },
+      },
+    },
+  },
+
+  {
     "snacks.nvim",
     opts = {
       dashboard = {
