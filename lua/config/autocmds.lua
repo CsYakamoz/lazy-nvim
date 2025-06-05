@@ -32,3 +32,24 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("lazyvim_mini_splitjoin_trailing_comma", { clear = true }),
+  pattern = { "go" },
+  callback = function()
+    local splitjoin = require("mini.splitjoin")
+    local gen_hook = splitjoin.gen_hook
+    local parens = { brackets = { "%b()" } }
+
+    -- Add trailing comma when splitting inside parenthesis
+    local add_comma_parens = gen_hook.add_trailing_separator(parens)
+
+    -- Delete trailing comma when joining inside parenthesis
+    local del_comma_parens = gen_hook.del_trailing_separator(parens)
+
+    vim.b.minisplitjoin_config = {
+      split = { hooks_post = { add_comma_parens } },
+      join = { hooks_post = { del_comma_parens } },
+    }
+  end,
+})
