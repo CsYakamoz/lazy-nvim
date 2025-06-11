@@ -11,11 +11,4 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   },
-
-  {
-    "echasnovski/mini.splitjoin",
-    version = false,
-    keys = { "gS" },
-    config = true,
-  },
 }

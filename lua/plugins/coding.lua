@@ -32,4 +32,21 @@ return {
       default_command = "im-select",
     },
   },
+
+  {
+    "echasnovski/mini.splitjoin",
+    version = false,
+    keys = { { "gS", mode = { "n", "x" }, desc = "Toggle arguments" } },
+    config = true,
+  },
+
+  {
+    "echasnovski/mini.align",
+    version = false,
+    keys = {
+      { "ga", mode = { "n", "x" }, desc = "Align" },
+      { "gA", mode = { "n", "x" }, desc = "Align with preview" },
+    },
+    config = true,
+  },
 }
