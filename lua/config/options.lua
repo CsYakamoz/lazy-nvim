@@ -7,3 +7,4 @@ vim.g.autoformat = false
 local opt = vim.opt
 
 opt.relativenumber = false
+opt.jumpoptions = "stack"
