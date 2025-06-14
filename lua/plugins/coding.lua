@@ -26,14 +26,6 @@ return {
   },
 
   {
-    "keaising/im-select.nvim",
-    event = "VeryLazy",
-    opts = {
-      default_command = "im-select",
-    },
-  },
-
-  {
     "echasnovski/mini.splitjoin",
     version = false,
     keys = { { "gS", mode = { "n", "x" }, desc = "Toggle arguments" } },

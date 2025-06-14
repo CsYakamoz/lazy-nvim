@@ -11,4 +11,12 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   },
+
+  {
+    "keaising/im-select.nvim",
+    event = "VeryLazy",
+    opts = {
+      default_command = "im-select",
+    },
+  },
 }
