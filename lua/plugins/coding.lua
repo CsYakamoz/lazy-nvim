@@ -41,4 +41,39 @@ return {
     },
     config = true,
   },
+
+  {
+    "saghen/blink.cmp",
+    dependencies = { "archie-judd/blink-cmp-words" },
+    event = "InsertEnter",
+    opts = {
+      sources = {
+        default = { "dictionary" },
+        providers = {
+          thesaurus = {
+            name = "blink-cmp-words",
+            module = "blink-cmp-words.thesaurus",
+            opts = {
+              score_offset = -5,
+              pointer_symbols = { "!", "&", "^" },
+            },
+          },
+
+          dictionary = {
+            name = "blink-cmp-words",
+            module = "blink-cmp-words.dictionary",
+            opts = {
+              dictionary_search_threshold = 2,
+              score_offset = -5,
+              pointer_symbols = { "!", "&", "^" },
+            },
+          },
+        },
+
+        per_filetype = {
+          markdown = { "thesaurus" },
+        },
+      },
+    },
+  },
 }
