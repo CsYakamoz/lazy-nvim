@@ -38,4 +38,15 @@ return {
     },
     cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
   },
+
+  {
+    "Owen-Dechow/nvim_json_graph_view",
+    opts = {
+      editor_type = "floating",
+      keymaps = {
+        link_backward = "H",
+      },
+    },
+    cmd = { "JsonGraphView" },
+  },
 }
