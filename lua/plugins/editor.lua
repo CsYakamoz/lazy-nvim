@@ -49,4 +49,23 @@ return {
     },
     cmd = { "JsonGraphView" },
   },
+
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    cmd = {
+      "CodeSnap",
+      "CodeSnapASCII",
+      "CodeSnapHighlight",
+      "CodeSnapSave",
+      "CodeSnapSaveHighlight",
+    },
+    opts = {
+      mac_window_bar = false,
+      has_breadcrumbs = true,
+      has_line_number = true,
+      bg_padding = 20,
+      watermark = "",
+    },
+  },
 }
