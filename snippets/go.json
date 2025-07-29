@@ -1,0 +1,11 @@
+{
+  "new function": {
+    "prefix": "newf",
+    "body": [
+      "func New${1:Type}() ${1:Type} {",
+      "\treturn ${1:Type}{\n\t$0\n\t}",
+      "}"
+    ],
+    "description": "new constructor function for a type"
+  }
+}
