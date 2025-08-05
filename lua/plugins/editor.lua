@@ -66,4 +66,22 @@ return {
       watermark = "",
     },
   },
+
+  {
+    "monaqa/dial.nvim",
+    opts = function(_, opts)
+      local augend = require("dial.augend")
+
+      local equal_alias = augend.constant.new({
+        elements = { "==", "!=" },
+        word = false,
+        cyclic = true,
+      })
+
+      table.insert(opts.groups.default, equal_alias)
+      table.insert(opts.groups.default, augend.date.alias["%Y-%m-%d"])
+
+      return opts
+    end,
+  },
 }
