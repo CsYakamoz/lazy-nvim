@@ -14,10 +14,8 @@ return {
 
   {
     "keaising/im-select.nvim",
-    event = "VeryLazy",
-    opts = {
-      default_command = "im-select",
-    },
+    event = "InsertEnter",
+    opts = true,
   },
 
   {
