@@ -38,14 +38,16 @@ return {
   },
 
   {
-    "Owen-Dechow/nvim_json_graph_view",
-    opts = {
-      editor_type = "floating",
-      keymaps = {
-        link_backward = "H",
-      },
+    "Owen-Dechow/videre.nvim",
+    cmd = "Videre",
+    dependencies = {
+      "Owen-Dechow/graph_view_yaml_parser",
+      "Owen-Dechow/graph_view_toml_parser",
+      "a-usr/xml2lua.nvim",
     },
-    cmd = { "JsonGraphView" },
+    opts = {
+      simple_statusline = false,
+    },
   },
 
   {
