@@ -17,12 +17,6 @@ set("v", "gh", "g^", { desc = "Jump to First Non Blank Char", silent = true, nor
 set("n", "<C-n>", "gt", { desc = "Next Tab" })
 set("n", "<C-p>", "gT", { desc = "Previous Tab" })
 
--- Quickly add empty lines: https://github.com/mhinz/vim-galore#quickly-add-empty-lines
--- stylua: ignore start
-set( "n", "<leader>o", ":<C-u>put =repeat(nr2char(10), v:count1)<cr>", { desc = "Add New Line Below the Current Line", silent = true, noremap = true })
-set( "n", "<leader>O", ":<C-u>put! =repeat(nr2char(10), v:count1)<cr>'[", { desc = "Add New Line Above the Current Line", silent = true, noremap = true })
--- stylua: ignore end
-
 -- Highlight matches without moving: https://vim.fandom.com/wiki/Highlight_all_search_pattern_matches#Highlight_matches_without_moving
 -- stylua: ignore
 set( "n", "z/", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>", { desc = "Highlight <cword> without moving", silent = true, noremap = true })
