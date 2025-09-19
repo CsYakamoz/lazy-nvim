@@ -26,14 +26,14 @@ return {
   },
 
   {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     version = false,
     keys = { { "gS", mode = { "n", "x" }, desc = "Toggle arguments" } },
     config = true,
   },
 
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     version = false,
     keys = {
       { "ga", mode = { "n", "x" }, desc = "Align" },
@@ -78,7 +78,7 @@ return {
   },
 
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     config = function(_, opts)
       LazyVim.mini.pairs(opts)
 
