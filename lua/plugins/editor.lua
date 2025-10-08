@@ -105,4 +105,61 @@ return {
       },
     },
   },
+
+  {
+    "folke/snacks.nvim",
+    ---@module "snacks"
+    ---@type snacks.Config
+    opts = {
+      picker = {
+        sources = {
+          explorer = {
+            win = {
+              list = {
+                keys = {
+                  ["<leader>y"] = "copy_path",
+                },
+              },
+            },
+            actions = {
+              ---@link https://github.com/folke/snacks.nvim/discussions/1372
+              copy_path = function(_, node)
+                local modify = vim.fn.fnamemodify
+                local filepath = node.file
+                local filename = modify(filepath, ":t")
+                local choices = {
+                  { label = "Absolute path:", value = filepath },
+                  { label = "Path relative to CWD:", value = modify(filepath, ":.") },
+                  { label = "Path relative to HOME:", value = modify(filepath, ":~") },
+                  { label = "Filename:", value = filename },
+                }
+                if vim.fn.isdirectory(filepath) == 0 then
+                  vim.list_extend(choices, {
+                    { label = "Filename without extension:", value = modify(filename, ":r") },
+                    { label = "Extension of the filename:", value = modify(filename, ":e") },
+                  })
+                end
+
+                require("snacks").picker.select(choices, {
+                  prompt = "Choose to copy to clipboard:",
+                  format_item = function(item)
+                    return string.format("%-27s %s", item.label, item.value)
+                  end,
+                }, function(choice)
+                  if not choice then
+                    vim.notify("Copy cancelled.", vim.log.levels.INFO)
+                    return
+                  end
+
+                  vim.fn.setreg('"', choice.value)
+                  vim.fn.setreg("+", choice.value)
+                  vim.notify("Copied: " .. choice.value)
+                end)
+              end,
+            },
+          },
+        },
+      },
+    },
+  },
 }
