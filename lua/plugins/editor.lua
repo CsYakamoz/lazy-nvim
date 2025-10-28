@@ -100,6 +100,9 @@ return {
     priority = 1000,
     opts = {
       options = {
+        add_messages = {
+          display_count = true,
+        },
         show_source = {
           enabled = true,
           if_many = true,
