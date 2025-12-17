@@ -59,20 +59,20 @@ return {
 
   {
     "mistricky/codesnap.nvim",
-    build = "make",
+    tag = "v2.0.0-beta.17",
     cmd = {
       "CodeSnap",
       "CodeSnapASCII",
       "CodeSnapHighlight",
       "CodeSnapSave",
-      "CodeSnapSaveHighlight",
+      "CodeSnapHighlightSave",
     },
     opts = {
-      mac_window_bar = false,
-      has_breadcrumbs = true,
-      has_line_number = true,
-      bg_padding = 20,
-      watermark = "",
+      snapshot_config = {
+        watermark = {
+          content = "",
+        },
+      },
     },
   },
 
