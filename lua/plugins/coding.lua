@@ -91,4 +91,10 @@ return {
       map_bs("<C-u>", 'v:lua.MiniPairs.bs("\21")')
     end,
   },
+
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    opts = true,
+  },
 }

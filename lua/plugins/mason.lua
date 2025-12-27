@@ -8,13 +8,16 @@ return {
       ensure_installed = {
         -- linter
         "clang-format",
-        "golangci-lint",
         "protolint",
 
         -- formatter
         "gofumpt",
         "goimports-reviser",
         "golines",
+
+        -- go tools for plugin: olexsmir/gopher.nvim
+        "gomodifytags",
+        "impl",
       },
     },
   },
