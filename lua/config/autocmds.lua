@@ -7,28 +7,46 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
-local function use_tab(n)
-  vim.bo.tabstop = n
-  vim.bo.shiftwidth = n
-  vim.bo.expandtab = false
+--- @class IndentConfig
+--- @field expandtab boolean Whether to use spaces instead of tabs
+--- @field tabstop number Number of spaces that a <Tab> counts for
+--- @field shiftwidth number Number of spaces to use for each step of (auto)indent
+local function indent(config)
+  local default = {
+    expandtab = true,
+    tabstop = 4,
+    shiftwidth = 4,
+  }
+
+  --- merge two tables, with values from `config` taking precedence over `default_config`
+  for k, v in pairs(default) do
+    if config[k] == nil then
+      config[k] = v
+    end
+  end
+
+  vim.bo.expandtab = config.expandtab
+  vim.bo.tabstop = config.tabstop
+  vim.bo.shiftwidth = config.shiftwidth
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("lazyvim_use_tab", { clear = true }),
-  pattern = {
-    "go",
-    "gitconfig",
-  },
+  group = vim.api.nvim_create_augroup("lazyvim_customize_tab", { clear = true }),
+  pattern = { "go", "gitconfig" },
   callback = function()
     local dict = {
-      go = 4,
-      gitconfig = 2,
+      go = { expandtab = false },
+      gitconfig = {
+        expandtab = false,
+        tabstop = 2,
+        shiftwidth = 2,
+      },
     }
 
     if dict[vim.bo.filetype] then
-      use_tab(dict[vim.bo.filetype])
+      indent(dict[vim.bo.filetype])
     else
-      print("No tab size defined for " .. vim.bo.filetype)
+      print("No customized tab defined for " .. vim.bo.filetype)
     end
   end,
 })
