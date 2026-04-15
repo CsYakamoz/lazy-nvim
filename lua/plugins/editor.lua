@@ -117,6 +117,34 @@ return {
   },
 
   {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "folke/snacks.nvim" },
+      {
+        "neovim/nvim-lspconfig",
+        opts = {
+          servers = {
+            ["*"] = {
+              keys = {
+                {
+                  "<leader>ca",
+                  function()
+                    require("tiny-code-action").code_action()
+                  end,
+                  desc = "Code Action",
+                  has = "codeAction", -- Only set this keymap for servers that support code actions
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    event = "LspAttach",
+    opts = {},
+  },
+
+  {
     "folke/snacks.nvim",
     ---@module "snacks"
     ---@type snacks.Config
