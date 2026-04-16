@@ -32,7 +32,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "catppuccin-nvim",
       -- colorscheme = "rose-pine",
     },
   },
@@ -73,15 +73,68 @@ return {
     "snacks.nvim",
     opts = {
       dashboard = {
-        preset = {
-          header = [[
- ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
- ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
- ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
- ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
- ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
- ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
-]],
+        sections = {
+          function()
+            return {
+              align = "center",
+              padding = 1,
+              text = {
+                { "│ ", hl = "Special" },
+                { "╲ ││\n", hl = "String" },
+                { "││", hl = "Special" },
+                { "╲╲││\n", hl = "String" },
+                { "││ ", hl = "Special" },
+                { "╲ │", hl = "String" },
+              },
+            }
+          end,
+          function()
+            local v = vim.version()
+            return {
+              align = "center",
+              text = {
+                {
+                  string.format("NVIM v%d.%d.%d", v.major, v.minor, v.patch),
+                  hl = "String",
+                },
+              },
+            }
+          end,
+          {
+            align = "center",
+            text = {
+              {
+                "──────────────────────────────────────────────",
+                hl = "NonText",
+              },
+            },
+          },
+          {
+            align = "center",
+            text = { { "Nvim is open source and freely distributable" } },
+          },
+          {
+            align = "center",
+            text = {
+              {
+                "──────────────────────────────────────────────",
+                hl = "NonText",
+              },
+            },
+          },
+          { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+          { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+          { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+          {
+            align = "center",
+            text = {
+              {
+                "──────────────────────────────────────────────",
+                hl = "NonText",
+              },
+            },
+          },
+          { section = "startup" },
         },
       },
     },
